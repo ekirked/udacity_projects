@@ -67,12 +67,12 @@ function makeGrid(N, M) {
 	console.log("What makeGrid sees: \nheight: " + N + "\nwidth: " + M);
 	for (var row = 0; row < N; row++) {
 		// Define a new row in an HTML table, append to pixel canvas
-		$('#pixel_canvas').append('<tr></tr>');
+		var x = $('#pixel_canvas').append('<tr> </tr>');
 		// Testing: print message to console
 		console.log("Added new row " + row);
 		for (var column = 0; column < M; column++){
 			// Define a new cell in the row
-			$('#pixel_canvas').children('tr').append('<td></td>');
+			x.append('<td> </td>');
 			// $('tr').append('<td></td>');
 
 			// Testing: print message to console
@@ -81,15 +81,6 @@ function makeGrid(N, M) {
 			// that sets the background color of the cell to the selected color.
 		}
 	}
-
-	/* live help suggestion:
-	for (var r = 0; r < M; r++) {
-	        var x = document.getElementById('pixel_canvas').insertRow(r);
-	        for (var c = 0; c < N; c++) {
-	            x.insertCell(c);
-	        }
-	    }
-	*/
 }
 
 
