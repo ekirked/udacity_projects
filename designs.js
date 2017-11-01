@@ -68,13 +68,11 @@ function makeGrid(N, M) {
 	for (var row = 0; row < N; row++) {
 		// Define a new row in an HTML table, append to pixel canvas
 		var thisRow = $('#pixel_canvas').append('<tr></tr>');
-		$('#pixel_canvas').append('<tr></tr>');
 		// Testing: print message to console
 		console.log("Added new row " + row);
 		for (var column = 0; column < M; column++){
 			// Define a new cell in the row
 			var cell = thisRow.append('<td>abc</td>');
-			$('#pixel_canvas').children('tr').append('<td></td>');
 			// $('tr').append('<td></td>');
 			// Testing: print message to console
 			console.log("Added new cell " + column + " to row " + row);
