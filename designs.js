@@ -51,6 +51,8 @@ $('#sizePicker').submit(function(event) {
     // Testing: print height and width (from user input) to the console.
 	console.log("What sizePicker sees: \nheight: " + height + "\nwidth: " + width);
     makeGrid(height, width);
+    // Prevent the page from refreshing and reloading content
+    return false;
 });
 
 
@@ -63,16 +65,16 @@ function makeGrid(N, M) {
 	// and the nested loops access each element (column) for each row.
     // Testing: print height and width (from user input) to the console.
 	console.log("What makeGrid sees: \nheight: " + N + "\nwidth: " + M);
-	for (var row = 0; row < M; row++) {
+	for (var row = 0; row < N; row++) {
 		// Define a new row in an HTML table, append to pixel canvas
 		$('#pixel_canvas').append('<tr></tr>');
-		var x = document.getElementById('pixel_canvas').insertRow(row);
 		// Testing: print message to console
 		console.log("Added new row " + row);
-		for (var column = 0; column < N; column++){
+		for (var column = 0; column < M; column++){
 			// Define a new cell in the row
-			$('tr').append('<td></td>');
-			x.insertCell(column);
+			$('#pixel_canvas').children('tr').append('<td></td>');
+			// $('tr').append('<td></td>');
+
 			// Testing: print message to console
 			console.log("Added new cell " + column + " to row " + row);
 			// Also add an event listener to each cell
@@ -90,10 +92,6 @@ function makeGrid(N, M) {
 	*/
 }
 
-
-
-// Testing: print grid to the console.
-console.log(grid);
 
 // Add way of clearing the pixel canvas?
 
