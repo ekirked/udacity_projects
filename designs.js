@@ -67,22 +67,28 @@ function makeGrid(N, M) {
 	console.log("What makeGrid sees: \nheight: " + N + "\nwidth: " + M);
 	for (var row = 0; row < N; row++) {
 		// Define a new row in an HTML table, append to pixel canvas
-		var x = $('#pixel_canvas').append('<tr> </tr>');
+		var thisRow = $('#pixel_canvas').append('<tr></tr>');
 		// Testing: print message to console
 		console.log("Added new row " + row);
 		for (var column = 0; column < M; column++){
 			// Define a new cell in the row
-			x.append('<td> </td>');
+			var cell = thisRow.append('<td>abc</td>');
 			// $('tr').append('<td></td>');
-
 			// Testing: print message to console
 			console.log("Added new cell " + column + " to row " + row);
 			// Also add an event listener to each cell
 			// that sets the background color of the cell to the selected color.
+			$('#pixel_canvas').on('click', 'td', function() {
+				('td').css('background-color', '#FCDA85');
+			});
 		}
 	}
 }
 
+// Add test event listener for test canvas
+$('td').on('click', function () {
+	$('td').css('background-color', '#FFCB00');  
+})
 
 // Add way of clearing the pixel canvas?
 
