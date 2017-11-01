@@ -63,25 +63,15 @@ function makeGrid(N, M) {
 	// and the nested loops access each element (column) for each row.
     // Testing: print height and width (from user input) to the console.
 	console.log("What makeGrid sees: \nheight: " + N + "\nwidth: " + M);
-
-	for (var r = 0; r < M; r++) {
-	        var x = document.getElementById('pixel_canvas').insertRow(r);
-	        for (var c = 0; c < N; c++) {
-	            x.insertCell(c);
-	        }
-	    }
-
-
-	/*
 	for (var row = 0; row < M; row++) {
 		// Define a new row in an HTML table, append to pixel canvas
-		// $('#pixel_canvas').append('<tr></tr>');
+		$('#pixel_canvas').append('<tr></tr>');
 		var x = document.getElementById('pixel_canvas').insertRow(row);
 		// Testing: print message to console
 		console.log("Added new row " + row);
 		for (var column = 0; column < N; column++){
 			// Define a new cell in the row
-			// $('tr').append('<td></td>');
+			$('tr').append('<td></td>');
 			x.insertCell(column);
 			// Testing: print message to console
 			console.log("Added new cell " + column + " to row " + row);
@@ -89,17 +79,18 @@ function makeGrid(N, M) {
 			// that sets the background color of the cell to the selected color.
 		}
 	}
+
+	/* live help suggestion:
+	for (var r = 0; r < M; r++) {
+	        var x = document.getElementById('pixel_canvas').insertRow(r);
+	        for (var c = 0; c < N; c++) {
+	            x.insertCell(c);
+	        }
+	    }
 	*/
 }
 
-/* live help suggestion:
-for (var r = 0; r < rowCount; r++) {
-        var x = document.getElementById('pixel_canvas').insertRow(r);
-        for (var c = 0; c < colCount; c++) {
-            x.insertCell(c);
-        }
-    }
-*/
+
 
 // Testing: print grid to the console.
 console.log(grid);
