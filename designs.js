@@ -78,16 +78,16 @@ function makeGrid(N, M) {
 			console.log("Added new cell " + column + " to row " + row);
 			// Also add an event listener to each cell
 			// that sets the background color of the cell to the selected color.
-			$('#pixel_canvas').on('click', 'td', function() {
-				('td').css('background-color', '#FCDA85');
-			});
+			$('td').on('click', function () {
+				$(this).css('background-color', colorPicker);  
+			})
 		}
 	}
 }
 
 // Add test event listener for test canvas
 $('td').on('click', function () {
-	$('td').css('background-color', '#FFCB00');  
+	$(this).css('background-color', colorPicker);  
 })
 
 // Add way of clearing the pixel canvas?
