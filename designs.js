@@ -46,6 +46,7 @@ $('#input_width').on('input', function() {
 // When size is submitted by the user, call makeGrid()
 
 $('#sizePicker').submit(function(event) {
+	event.preventDefault()
 	// test: set h2 background to a different color
     $('h2').css('background-color', '#FFCB00');  
     // Testing: print height and width (from user input) to the console.
@@ -58,31 +59,20 @@ $('#sizePicker').submit(function(event) {
 
 // Set size of the canvas as an N by M grid
 
-function makeGrid(N, M) {
-	// Use nested arrays to make a grid: each row is an array,
-	// and each array is an element of the larger array.
-	// The first loop accesses each row of the grid,
-	// and the nested loops access each element (column) for each row.
-    // Testing: print height and width (from user input) to the console.
-	console.log("What makeGrid sees: \nheight: " + N + "\nwidth: " + M);
-	for (var row = 0; row < N; row++) {
-		// Define a new row in an HTML table, append to pixel canvas
-		var thisRow = $('#pixel_canvas').append('<tr></tr>');
-		// Testing: print message to console
-		console.log("Added new row " + row);
-		for (var column = 0; column < M; column++){
-			// Define a new cell in the row
-			var cell = thisRow.append('<td>abc</td>');
-			// $('tr').append('<td></td>');
-			// Testing: print message to console
-			console.log("Added new cell " + column + " to row " + row);
-			// Also add an event listener to each cell
-			// that sets the background color of the cell to the selected color.
-			$('td').on('click', function () {
-				$(this).css('background-color', colorPicker);  
-			})
-		}
-	}
+function makeGrid(heightMax, widthMax) {
+
+	$('#pixel_canvas').empty()
+
+	for (var row = 0; row < heightMax; row++) {
+        $("#pixel_canvas").append("<tr> </tr>");
+        for (var column = 0; column < widthMax; column++) {
+            $("tr:last").append("<td> </td>"); 
+        }
+    }
+
+	$('td').on('click', function () {
+		$(this).css('background-color', colorPicker);  
+	})
 }
 
 // Add test event listener for test canvas
