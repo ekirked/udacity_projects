@@ -31,8 +31,6 @@ $('#colorPicker').on('input', function() {
 
 $('#input_height').on('input', function() {
 	height = $('#input_height').val();
-	// test: set background to a different color
-    $('body').css('background-color', '#BFDDDE');  
 });
 
 $('#input_width').on('input', function() {
