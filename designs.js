@@ -2,13 +2,13 @@
 // submit button, table, color picker need to be accessed by the user
 // the value of the color needs to be stored
 
-var height;
-var width;
-var submitButton;
-var colorPicker;
-var userColor;
-var grid = [[]];
-var clearButton;
+let height;
+let width;
+let submitButton;
+let colorPicker;
+let userColor;
+let grid = [[]];
+let clearButton;
 
 height = $('#input_height').val();
 width = $('#input_width').val();
@@ -53,9 +53,9 @@ function makeGrid(heightMax, widthMax) {
 
 	$('#pixel_canvas').empty();
 
-	for (var row = 0; row < heightMax; row++) {
+	for (let row = 0; row < heightMax; row++) {
         $("#pixel_canvas").append("<tr> </tr>");
-        for (var column = 0; column < widthMax; column++) {
+        for (let column = 0; column < widthMax; column++) {
             $("tr:last").append("<td> </td>"); 
             // Set background color of pixel canvas to white
             $('td').css('background-color', '#FFFFFF');  
