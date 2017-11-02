@@ -8,12 +8,14 @@ var submitButton;
 var colorPicker;
 var userColor;
 var grid = [[]];
+var clearButton;
 
 height = $('#input_height').val();
 width = $('#input_width').val();
 submitButton = $('#select_button').val();
 colorPicker = $('#colorPicker').val();
 sizePicker = $('#sizePicker').val();
+clearButton = $('#clear_button').val();
 
 
 // Select color input
@@ -46,14 +48,12 @@ $('#input_width').on('input', function() {
 // When size is submitted by the user, call makeGrid()
 
 $('#sizePicker').submit(function(event) {
-	event.preventDefault()
+	event.preventDefault();
 	// test: set h2 background to a different color
     $('h2').css('background-color', '#FFCB00');  
     // Testing: print height and width (from user input) to the console.
 	console.log("What sizePicker sees: \nheight: " + height + "\nwidth: " + width);
     makeGrid(height, width);
-    // Prevent the page from refreshing and reloading content
-    return false;
 });
 
 
@@ -61,12 +61,14 @@ $('#sizePicker').submit(function(event) {
 
 function makeGrid(heightMax, widthMax) {
 
-	$('#pixel_canvas').empty()
+	$('#pixel_canvas').empty();
 
 	for (var row = 0; row < heightMax; row++) {
         $("#pixel_canvas").append("<tr> </tr>");
         for (var column = 0; column < widthMax; column++) {
             $("tr:last").append("<td> </td>"); 
+            // Set background color of pixel canvas to white
+            $('td').css('background-color', '#FFFFFF');  
         }
     }
 
@@ -75,11 +77,15 @@ function makeGrid(heightMax, widthMax) {
 	})
 }
 
-// Add test event listener for test canvas
-$('td').on('click', function () {
-	$(this).css('background-color', colorPicker);  
-})
 
-// Add way of clearing the pixel canvas?
+// Add way of clearing the pixel canvas
+// Listen to clearButton
+
+$('#clearCanvas').submit(function(event) {
+	event.preventDefault();
+	// Reset background color of pixel canvas to white
+	$('td').css('background-color', '#FFFFFF');  
+	console.log("clear button clicked");
+});
 
 
