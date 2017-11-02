@@ -24,8 +24,6 @@ clearButton = $('#clear_button').val();
 
 $('#colorPicker').on('input', function() {
 	colorPicker = $('#colorPicker').val();
-	// test: set h2 to the color selected by user
-	$('h2').css('color', colorPicker);  
 });
 
 
@@ -38,9 +36,7 @@ $('#input_height').on('input', function() {
 });
 
 $('#input_width').on('input', function() {
-	width = $('#input_width').val();
-	// test: set h1 background to a different color
-    $('h1').css('background-color', '#FCDA85');  
+	width = $('#input_width').val(); 
 });
 
                                    
@@ -49,10 +45,6 @@ $('#input_width').on('input', function() {
 
 $('#sizePicker').submit(function(event) {
 	event.preventDefault();
-	// test: set h2 background to a different color
-    $('h2').css('background-color', '#FFCB00');  
-    // Testing: print height and width (from user input) to the console.
-	console.log("What sizePicker sees: \nheight: " + height + "\nwidth: " + width);
     makeGrid(height, width);
 });
 
@@ -79,7 +71,6 @@ function makeGrid(heightMax, widthMax) {
 
 
 // Add way of clearing the pixel canvas
-// Listen to clearButton
 
 $('#clearCanvas').submit(function(event) {
 	event.preventDefault();
