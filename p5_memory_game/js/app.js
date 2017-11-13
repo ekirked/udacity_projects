@@ -1,6 +1,7 @@
 /*
  * create a list that holds all of your cards
  */
+
 var cards = [];
 // iterate through all cards in DOM and run a function against each one
 $('.card').each(function(index){
@@ -10,6 +11,7 @@ $('.card').each(function(index){
 
 // testing: print list of cards
 console.log(cards);
+
 
 /*
  * display the cards on the page
@@ -32,6 +34,12 @@ function shuffle(array) {
 
     return array;
 }
+
+// call shuffle function on array of cards
+cards = shuffle(cards);
+
+// testing: print list of shuffled cards
+console.log(cards);
 
 
 /*
