@@ -52,7 +52,7 @@ function restart(cards) {
     deck.html(buildDeck);
 
     // testing: show all the cards by adding "open show" to each card
-    deck.find('li').addClass('open show');
+    // deck.find('li').addClass('open show');
 
 	// testing: print list of shuffled cards
 	console.log(cards);
@@ -65,9 +65,18 @@ restart(cardsStart);
 $('.fa-repeat').on('click', function(event) {
 	// event.preventDefault();
 	restart(cardsStart);
+	// testing: print message to console
 	console.log("restart button clicked")
 });
 
+
+// set up event listener for showing a card when clicked
+$('.card').on('click', function(event) {
+	// add "open show" to the card
+	$(this).addClass('open show');
+	// testing: print message to console
+	console.log("individual card clicked")
+});
 
 
 /*
