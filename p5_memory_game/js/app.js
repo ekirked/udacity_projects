@@ -56,9 +56,20 @@ function restart(cards) {
 
 	// testing: print list of shuffled cards
 	console.log(cards);
+
+	// set up event listener for showing a card when clicked
+	$('.card').on('click', function(event) {
+	
+		// add "open show" to the card
+		$(this).addClass('open show');
+		
+		// testing: print message to console
+		console.log("individual card clicked")
+	});
 }
 
 restart(cardsStart);
+
 
 // set up event listener for restart button
 // let restartButton = $('.fa-repeat').val();
@@ -70,13 +81,7 @@ $('.fa-repeat').on('click', function(event) {
 });
 
 
-// set up event listener for showing a card when clicked
-$('.card').on('click', function(event) {
-	// add "open show" to the card
-	$(this).addClass('open show');
-	// testing: print message to console
-	console.log("individual card clicked")
-});
+
 
 
 /*
