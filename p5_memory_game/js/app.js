@@ -3,11 +3,14 @@
  */
 
 var cards = [];
+
 // iterate through all cards in DOM and run a function against each one
-$('.card').each(function(index){
+// $('.card').each(function(index){
 	// add current element in the loop to the cards array
-	cards.push($(this));
-});
+	// cards.push($(this));
+// });
+
+var cardsStart = ['diamond', 'paper-plane-o', 'anchor', 'bolt', 'cube', 'leaf', 'bicycle', 'bomb', 'diamond', 'paper-plane-o', 'anchor', 'bolt', 'cube', 'leaf', 'bicycle', 'bomb'];
 
 // testing: print list of cards
 console.log(cards);
@@ -35,12 +38,33 @@ function shuffle(array) {
     return array;
 }
 
-// call shuffle function on array of cards
-cards = shuffle(cards);
+function restart(cards) {
 
-// testing: print list of shuffled cards
-console.log(cards);
+	// call shuffle function on array of cards
+    cards = shuffle(cards);
 
+    // get deck from DOM and empty it
+    var deck = $('.deck');
+    deck.empty();
+
+    // start with empty string
+    var buildDeck = '';
+    // use for...of loop to loop over the entire deck of cards
+    for (const card of cards) {
+    	// use template literals to build HTML for each card
+        buildDeck += `<li class="card" data-name="${card}"><i class="fa fa-${card}"></i></li>`;
+    }
+    // use jquery .html method to create HTML for all the card
+    deck.html(buildDeck);
+
+    // testing: show all the cards by adding "open show" to each card
+    deck.find('li').addClass('open show');
+
+	// testing: print list of shuffled cards
+	console.log(cards);
+}
+
+restart(cardsStart);
 
 /*
  * set up the event listener for a card. If a card is clicked:
