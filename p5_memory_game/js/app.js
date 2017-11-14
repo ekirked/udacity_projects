@@ -1,6 +1,4 @@
-/*
- * create a list that holds all of your cards
- */
+// define variables
 
 var cards = [];
 
@@ -10,18 +8,12 @@ var cards = [];
 	// cards.push($(this));
 // });
 
+// create a starting deck of cards
 var cardsStart = ['diamond', 'paper-plane-o', 'anchor', 'bolt', 'cube', 'leaf', 'bicycle', 'bomb', 'diamond', 'paper-plane-o', 'anchor', 'bolt', 'cube', 'leaf', 'bicycle', 'bomb'];
 
 // testing: print list of cards
 console.log(cards);
 
-
-/*
- * display the cards on the page
- *   - shuffle the list of cards using the provided "shuffle" method below
- *   - loop through each card and create its HTML
- *   - add each card's HTML to the page
- */
 
 // shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -38,6 +30,8 @@ function shuffle(array) {
     return array;
 }
 
+
+// restart function shuffles the list of cards and adds each card's HTML to the page
 function restart(cards) {
 
 	// call shuffle function on array of cards
@@ -65,6 +59,16 @@ function restart(cards) {
 }
 
 restart(cardsStart);
+
+// set up event listener for restart button
+// let restartButton = $('.fa-repeat').val();
+$('.fa-repeat').on('click', function(event) {
+	// event.preventDefault();
+	restart(cardsStart);
+	console.log("restart button clicked")
+});
+
+
 
 /*
  * set up the event listener for a card. If a card is clicked:
