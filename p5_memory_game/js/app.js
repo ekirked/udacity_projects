@@ -108,7 +108,7 @@ function checkCard(card) {
 	console.log("length of list of open cards: " + openCards.length);
 
 	// checks whether the current list of open cards has a card in it already
-	if (openCards.length > 0) {
+	if (openCards.length > 1) {
 
 		// testing: print message to console
 		console.log("prints if openCards has something in it");
