@@ -167,7 +167,7 @@ function checkCard(card) {
 			// lock the two matched cards in an open position
 			lockCards(card, openedCard);
 
-			// remove both cards from list of open cards to console
+			// remove both cards from list of open cards
 			removeCards();
 
 		} else {
@@ -181,13 +181,15 @@ function checkCard(card) {
 			// testing: print name of opened card
 			console.log("opened card: " + openCards[0].attr('data-name'));
 
+			// ADD DELAY
+
 			// call cardHide function
 			cardHide(card);
 			console.log("hid the new card");
 			cardHide(openCards[0]);
 			console.log("hid the already-opened card");
 
-			// remove both cards from list of open cards to console
+			// remove both cards from list of open cards
 			removeCards();
 
 		}
@@ -207,10 +209,16 @@ function checkCard(card) {
 // set up event listener for restart button
 // let restartButton = $('.fa-repeat').val();
 $('.fa-repeat').on('click', function(event) {
+
 	// event.preventDefault();
 	restart(cardsStart);
+
 	// testing: print message to console
 	console.log("restart button clicked")
+
+	// clear current list of open cards
+	removeCards();
+	
 });
 
 
