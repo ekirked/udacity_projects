@@ -76,9 +76,12 @@ function cardClick() {
 
 		// call addCard on this card to add it to the current list of open cards
 		addCard(card);
+
+		// call checkCard on this card to see if it matches an open card
+		checkCard(card);
 		
 		// testing: print message to console
-		console.log("individual card clicked")
+		console.log("individual card clicked, end of cardClick")
 	});
 }
 
@@ -96,6 +99,43 @@ function addCard(card) {
 
 	// testing: print current list of open cards
 	console.log(openCards);
+}
+
+// checkCard function checks to see if a new card matches an open card
+function checkCard(card) {
+
+	// testing: print current length of list of open cards to console
+	console.log("length of list of open cards: " + openCards.length);
+
+	// checks whether the current list of open cards has a card in it already
+	if (openCards.length > 0) {
+
+		// testing: print message to console
+		console.log("prints if openCards has something in it");
+
+		// gets the name of the card that's already open
+		const openedCard = $('.deck li').get(openCards[0]);
+
+		// check to see if the two open cards match
+		if (card.attr('data-name') === $(openedCard).attr('data-name')) {
+
+			// testing: print message to console
+			console.log("these two cards match: " + card + " & " + openedCard);
+
+		} else {
+
+			// testing: print message to console
+			console.log("these two cards do not match: " + card + " & " + openedCard);
+
+		}
+
+	} else {
+
+		// this means the new card is the only one open
+		console.log("there are no other open cards to compare against");
+
+	}
+
 }
 
 
