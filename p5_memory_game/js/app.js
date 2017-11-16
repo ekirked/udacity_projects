@@ -59,16 +59,7 @@ function restart(cards) {
 
 	// add event listener to each card
 	cards = cardClick();
-	
-	// set up event listener for showing a card when clicked
-	// $('.card').on('click', function(event) {
-	
-		// add "open show" to the card
-		// $(this).addClass('open show');
-		
-		// testing: print message to console
-		// console.log("individual card clicked")
-	// });
+
 }
 
 restart(cardsStart);
@@ -76,13 +67,22 @@ restart(cardsStart);
 // cardClick function adds event listener for showing a card when clicked
 function cardClick() {
 	$('.card').on('click', function(event) {
+
+		card = $(this)
 	
-		// add "open show" to the card
-		$(this).addClass('open show');
+		// call cardShow on this card to display it		
+		cardShow(card);
 		
 		// testing: print message to console
 		console.log("individual card clicked")
 	});
+}
+
+// cardShow function shows an individual card by adding "open show"
+function cardShow(card) {
+
+	card.addClass('open show');
+
 }
 
 // set up event listener for restart button
