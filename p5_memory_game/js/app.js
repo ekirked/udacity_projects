@@ -63,13 +63,15 @@ function restart(cards) {
 
 }
 
+
 restart(cardsStart);
+
 
 // cardClick function adds event listener for showing a card when clicked
 function cardClick() {
 	$('.card').on('click', function(event) {
 
-		card = $(this)
+		card = $(this);
 	
 		// call cardShow on this card to display it		
 		cardShow(card);
@@ -85,10 +87,24 @@ function cardClick() {
 	});
 }
 
-// cardShow function shows an individual card by adding "open show"
+
+// cardShow function shows an individual card
 function cardShow(card) {
+
+	// adds "open show" to card class
 	card.addClass('open show');
+
 }
+
+
+// cardHide function hides an individual card
+function cardHide(card) {
+
+	// removes "open show" from card class
+	card.removeClass('open show');
+
+}
+
 
 // addCard function adds the card to openCards list
 function addCard(card) {
@@ -100,6 +116,19 @@ function addCard(card) {
 	// testing: print current list of open cards
 	console.log(openCards);
 }
+
+
+// lockCards function locks two matched cards in an open position
+function lockCards(firstCard, secondCard) {
+
+	// add a little animation to the matched cards
+	// CODE GOES HERE
+
+	// testing: print message to console
+	console.log("locking cards " + firstCard + " & " + secondCard);
+
+}
+
 
 // checkCard function checks to see if a new card matches an open card
 function checkCard(card) {
@@ -128,10 +157,25 @@ function checkCard(card) {
 			// testing: print message to console
 			console.log("these two cards match: " + card + " & " + openedCard);
 
+			// lock the two matched cards in an open position
+			lockCards(card, openedCard);
+
 		} else {
 
 			// testing: print message to console
 			console.log("these two cards do not match: " + card + " & " + openedCard);
+
+			// testing: print name of current card
+			console.log("current card: " + card.attr('data-name'));
+
+			// testing: print name of opened card
+			console.log("opened card: " + openCards[0].attr('data-name'));
+
+			// call cardHide function
+			cardHide(card);
+			console.log("hid the new card");
+			cardHide(openCards[0]);
+			console.log("hid the already-opened card");
 
 		}
 
@@ -143,6 +187,8 @@ function checkCard(card) {
 	}
 
 }
+
+
 
 
 // set up event listener for restart button
