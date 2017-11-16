@@ -118,6 +118,13 @@ function addCard(card) {
 }
 
 
+// removeCards function removes two cards from the list of opened cards
+function removeCards() {
+	openCards.pop();
+	openCards.pop();
+}
+
+
 // lockCards function locks two matched cards in an open position
 function lockCards(firstCard, secondCard) {
 
@@ -160,6 +167,9 @@ function checkCard(card) {
 			// lock the two matched cards in an open position
 			lockCards(card, openedCard);
 
+			// remove both cards from list of open cards to console
+			removeCards();
+
 		} else {
 
 			// testing: print message to console
@@ -176,6 +186,9 @@ function checkCard(card) {
 			console.log("hid the new card");
 			cardHide(openCards[0]);
 			console.log("hid the already-opened card");
+
+			// remove both cards from list of open cards to console
+			removeCards();
 
 		}
 
