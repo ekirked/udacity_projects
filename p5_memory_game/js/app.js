@@ -116,8 +116,14 @@ function checkCard(card) {
 		// gets the name of the card that's already open
 		const openedCard = $('.deck li').get(openCards[0]);
 
+		// testing: print name of current card
+		console.log("current card: " + card.attr('data-name'));
+
+		// testing: print name of opened card
+		console.log("opened card: " + openCards[0].attr('data-name'));
+
 		// check to see if the two open cards match
-		if (card.attr('data-name') === $(openedCard).attr('data-name')) {
+		if (card.attr('data-name') === openCards[0].attr('data-name')) {
 
 			// testing: print message to console
 			console.log("these two cards match: " + card + " & " + openedCard);
