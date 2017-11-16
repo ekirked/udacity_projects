@@ -1,6 +1,7 @@
 // define variables
 
 var cards = [];
+var openCards = [];
 
 // iterate through all cards in DOM and run a function against each one
 // $('.card').each(function(index){
@@ -72,6 +73,9 @@ function cardClick() {
 	
 		// call cardShow on this card to display it		
 		cardShow(card);
+
+		// call addCard on this card to add it to the current list of open cards
+		addCard(card);
 		
 		// testing: print message to console
 		console.log("individual card clicked")
@@ -80,10 +84,20 @@ function cardClick() {
 
 // cardShow function shows an individual card by adding "open show"
 function cardShow(card) {
-
 	card.addClass('open show');
-
 }
+
+// addCard function adds the card to openCards list
+function addCard(card) {
+	openCards.push(card);
+
+	// testing: print message to console
+	console.log("individual card added to list of open cards")
+
+	// testing: print current list of open cards
+	console.log(openCards);
+}
+
 
 // set up event listener for restart button
 // let restartButton = $('.fa-repeat').val();
