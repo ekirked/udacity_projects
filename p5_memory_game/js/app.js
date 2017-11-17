@@ -181,16 +181,16 @@ function checkCard(card) {
 			// testing: print name of opened card
 			console.log("opened card: " + openCards[0].attr('data-name'));
 
-			// ADD DELAY
+			// call cardHide function with a one-second delay to hide incorrect matches
+			setTimeout(function() {
+				cardHide(card);
+				console.log("hid the new card");
+				cardHide(openCards[0]);
+				console.log("hid the already-opened card");
 
-			// call cardHide function
-			cardHide(card);
-			console.log("hid the new card");
-			cardHide(openCards[0]);
-			console.log("hid the already-opened card");
-
-			// remove both cards from list of open cards
-			removeCards();
+				// remove both cards from list of open cards
+				removeCards();
+			}, 1000);			
 
 		}
 
@@ -218,7 +218,7 @@ $('.fa-repeat').on('click', function(event) {
 
 	// clear current list of open cards
 	removeCards();
-	
+
 });
 
 
