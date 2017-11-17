@@ -1,8 +1,11 @@
+// alert("Congrats, you've won the game!");
+
 // define variables
 
 var cards = [];
 var openCards = [];
 var moves = 0;
+var matches = 0;
 
 // iterate through all cards in DOM and run a function against each one
 // $('.card').each(function(index){
@@ -50,6 +53,7 @@ function restart(cards) {
     	// use template literals to build HTML for each card
         buildDeck += `<li class="card" data-name="${card}"><i class="fa fa-${card}"></i></li>`;
     }
+
     // use jquery .html method to create HTML for all the card
     deck.html(buildDeck);
 
@@ -73,6 +77,7 @@ function restart(cards) {
     	// use template literals to build HTML for each star
         buildStars += `<li><i class="fa fa-star"></i></li>`;
     }
+    
     // use jquery .html method to create HTML for all the card
     stars.html(buildStars);
 
@@ -188,6 +193,10 @@ function checkCard(card) {
 			// remove both cards from list of open cards
 			removeCards();
 
+			// increment match counter
+			matches++;
+			console.log("matches: " + matches);
+
 		} else {
 
 			// testing: print message to console
@@ -267,23 +276,11 @@ $('.fa-repeat').on('click', function(event) {
 });
 
 
+// if all 8 cards match, display a message with the final score
+if (matches === 2) {
 
+  alert("Congrats, you've won the game!");
 
+} else { 
+};
 
-/*
- * set up the event listener for a card. If a card is clicked:
- *  - display the card's symbol (put this functionality in another function that 
-      you call from this one)
- *  - add the card to a *list* of "open" cards (put this functionality in another 
-      function that you call from this one)
- *  - if the list already has another card, check to see if the two cards match
- *    + if the cards do match, lock the cards in the open position (put this 
-        functionality in another function that you call from this one)
- *    + if the cards do not match, remove the cards from the list and hide the 
-        card's symbol (put this functionality in another function that you call 
-        from this one)
- *    + increment the move counter and display it on the page (put this 
-        functionality in another function that you call from this one)
- *    + if all cards have matched, display a message with the final score (put 
-        this functionality in another function that you call from this one)
- */
