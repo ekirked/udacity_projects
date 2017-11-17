@@ -2,6 +2,7 @@
 
 var cards = [];
 var openCards = [];
+var moves = 0;
 
 // iterate through all cards in DOM and run a function against each one
 // $('.card').each(function(index){
@@ -158,6 +159,9 @@ function checkCard(card) {
 		// testing: print name of opened card
 		console.log("opened card: " + openCards[0].attr('data-name'));
 
+		// call addCount to increment move counter
+		addCount();
+
 		// check to see if the two open cards match
 		if (card.attr('data-name') === openCards[0].attr('data-name')) {
 
@@ -203,6 +207,44 @@ function checkCard(card) {
 
 }
 
+
+// increment move counter
+function addCount() {
+
+	// increment the number of clicks
+	moves++;
+
+	// udpate HTML
+	$('.moves').html(moves);
+
+	// testing: print message to console
+	console.log("moves: " + moves);
+	// console.log("moves: " + $('.moves'));
+}
+
+
+
+/*
+	function incrementCounter() {
+        const counter = $('.moves');
+        counter.text(+counter.text() + 1);
+        const stars = $('.stars');
+
+        function makestars(stars) {
+            let templi = "";
+            for (let i = 0; i < stars; i++) {
+                templi += "<li><i class=\"fa fa-star\"></i></li>"
+            }
+            return templi;
+        }
+
+        if (+counter.text() <= 10) stars.html(makestars(5));
+        else if (+counter.text() > 10 && +counter.text() <= 13) stars.html(makestars(4));
+        else if (+counter.text() > 13 && +counter.text() < 16) stars.html(makestars(3));
+        else if (+counter.text() > 16 && +counter.text() <= 19) stars.html(makestars(2));
+        else stars.html(makestars(1));
+    }
+*/
 
 
 
