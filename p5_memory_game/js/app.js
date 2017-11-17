@@ -62,6 +62,20 @@ function restart(cards) {
 	// add event listener to each card
 	cards = cardClick();
 
+	// get stars panel from DOM and empty it
+	// var stars = $('.stars');
+	// stars.empty();
+
+	// start with empty string
+    // var buildStars = '';
+    // make three stars
+    // for (var i = 0; i < 3; i++) {
+    	// use template literals to build HTML for each star
+        // buildStars += `<li><i class="fa" data-name="fa-star"></i></li>`;
+    // }
+    // use jquery .html method to create HTML for all the card
+    // deck.html(buildStars);
+
 }
 
 
@@ -225,34 +239,16 @@ function addCount() {
 		$('.move-word').html("Move");
 	} else { 
 		$('.move-word').html("Moves");
-		};
+	};
+
+	// remove one star at the 11th move and at the 17th move
+	if (moves === 11) {
+		$('.stars li').first().remove();
+	} else if (moves === 17) {
+		$('.stars li').first().remove();
+	} else { return };
 
 }
-
-
-
-/*
-	function incrementCounter() {
-        const counter = $('.moves');
-        counter.text(+counter.text() + 1);
-        const stars = $('.stars');
-
-        function makestars(stars) {
-            let templi = "";
-            for (let i = 0; i < stars; i++) {
-                templi += "<li><i class=\"fa fa-star\"></i></li>"
-            }
-            return templi;
-        }
-
-        if (+counter.text() <= 10) stars.html(makestars(5));
-        else if (+counter.text() > 10 && +counter.text() <= 13) stars.html(makestars(4));
-        else if (+counter.text() > 13 && +counter.text() < 16) stars.html(makestars(3));
-        else if (+counter.text() > 16 && +counter.text() <= 19) stars.html(makestars(2));
-        else stars.html(makestars(1));
-    }
-*/
-
 
 
 // set up event listener for restart button
