@@ -63,18 +63,18 @@ function restart(cards) {
 	cards = cardClick();
 
 	// get stars panel from DOM and empty it
-	// var stars = $('.stars');
-	// stars.empty();
+	var stars = $('.stars');
+	stars.empty();
 
 	// start with empty string
-    // var buildStars = '';
+    var buildStars = '';
     // make three stars
-    // for (var i = 0; i < 3; i++) {
+    for (var i = 0; i < 3; i++) {
     	// use template literals to build HTML for each star
-        // buildStars += `<li><i class="fa" data-name="fa-star"></i></li>`;
-    // }
+        buildStars += `<li><i class="fa fa-star"></i></li>`;
+    }
     // use jquery .html method to create HTML for all the card
-    // deck.html(buildStars);
+    stars.html(buildStars);
 
 }
 
