@@ -219,7 +219,14 @@ function addCount() {
 
 	// testing: print message to console
 	console.log("moves: " + moves);
-	// console.log("moves: " + $('.moves'));
+
+	// fix grammar of singular "1 move"
+	if (moves === 1) {
+		$('.move-word').html("Move");
+	} else { 
+		$('.move-word').html("Moves");
+		};
+
 }
 
 
