@@ -39,6 +39,12 @@ function shuffle(array) {
 // restart function shuffles the list of cards and adds each card's HTML to the page
 function restart(cards) {
 
+	// reset moves counter to zero
+	resetCount();
+
+	// reset matches counter to zero
+	matches = 0;
+
 	// call shuffle function on array of cards
     cards = shuffle(cards);
 
@@ -77,7 +83,7 @@ function restart(cards) {
     	// use template literals to build HTML for each star
         buildStars += `<li><i class="fa fa-star"></i></li>`;
     }
-    
+
     // use jquery .html method to create HTML for all the card
     stars.html(buildStars);
 
@@ -228,6 +234,23 @@ function checkCard(card) {
 
 	}
 
+	// if all 8 cards match, display a message with the final score
+	if (matches >= 2) {
+
+		// wait half a second before displaying success message and providing replay button
+  		setTimeout(function() {
+
+  			swal("Congrats!", "You won the game!", "success", {
+  				button: "Play again",
+			});
+
+  			// reset the game	
+			restart(cardsStart);
+		}, 500);
+
+	} else { 
+	};
+
 }
 
 
@@ -260,6 +283,18 @@ function addCount() {
 }
 
 
+// reset move counter
+function resetCount() {
+
+	// reset to zero
+	moves = 0;
+
+	// udpate HTML
+	$('.moves').html(moves);
+
+}
+
+
 // set up event listener for restart button
 // let restartButton = $('.fa-repeat').val();
 $('.fa-repeat').on('click', function(event) {
@@ -274,13 +309,3 @@ $('.fa-repeat').on('click', function(event) {
 	removeCards();
 
 });
-
-
-// if all 8 cards match, display a message with the final score
-if (matches === 2) {
-
-  alert("Congrats, you've won the game!");
-
-} else { 
-};
-
