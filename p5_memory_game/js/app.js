@@ -87,6 +87,9 @@ function restart(cards) {
     // use jquery .html method to create HTML for all the card
     stars.html(buildStars);
 
+    // animate cards to indicate shuffling
+    $('.card').transition({ rotate: '360deg' });
+
 }
 
 
@@ -117,6 +120,12 @@ function cardClick() {
 // cardShow function shows an individual card
 function cardShow(card) {
 
+	// add animation
+	card.transition({
+  		perspective: '100px',
+  		rotateY: '-180deg'
+	});
+
 	// adds "open show" to card class
 	card.addClass('open show');
 
@@ -125,6 +134,12 @@ function cardShow(card) {
 
 // cardHide function hides an individual card
 function cardHide(card) {
+
+	// add animation (0 degrees reverses -180 from flip to show)
+	card.transition({
+  		perspective: '100px',
+  		rotateY: '0deg'
+	});
 
 	// removes "open show" from card class
 	card.removeClass('open show');
@@ -151,14 +166,11 @@ function removeCards() {
 }
 
 
-// lockCards function locks two matched cards in an open position
-function lockCards(firstCard, secondCard) {
+// add a little animation to the correct card
+function celebrateCard(correctCard) {
 
-	// add a little animation to the matched cards
-	// CODE GOES HERE
-
-	// testing: print message to console
-	console.log("locking cards " + firstCard + " & " + secondCard);
+	correctCard.transition({ scale: 1.3 });
+	correctCard.transition({ scale: 1 });
 
 }
 
@@ -193,8 +205,9 @@ function checkCard(card) {
 			// testing: print message to console
 			console.log("these two cards match: " + card + " & " + openedCard);
 
-			// lock the two matched cards in an open position
-			lockCards(card, openedCard);
+			// animate the two matched cards in an open position
+				celebrateCard(card);
+				celebrateCard(openCards[0]);
 
 			// remove both cards from list of open cards
 			removeCards();
@@ -214,7 +227,7 @@ function checkCard(card) {
 			// testing: print name of opened card
 			console.log("opened card: " + openCards[0].attr('data-name'));
 
-			// call cardHide function with a one-second delay to hide incorrect matches
+			// call cardHide function (with a delay) to hide incorrect matches
 			setTimeout(function() {
 				cardHide(card);
 				console.log("hid the new card");
@@ -223,7 +236,8 @@ function checkCard(card) {
 
 				// remove both cards from list of open cards
 				removeCards();
-			}, 1000);			
+
+			}, 1200);			
 
 		}
 
@@ -235,17 +249,18 @@ function checkCard(card) {
 	}
 
 	// if all 8 cards match, display a message with the final score
-	if (matches >= 1) {
+	if (matches >= 8) {
 
 		// wait half a second before displaying success message and providing replay button
   		setTimeout(function() {
 
-  			swal("Congrats!", "You won the game!", "success", {
+  			swal("Congrats!", "You won the game in " + moves + " moves.", "success", {
   				button: "Play again",
 			});
 
   			// reset the game	
 			restart(cardsStart);
+
 		}, 500);
 
 	} else { 
