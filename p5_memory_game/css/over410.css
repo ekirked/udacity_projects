@@ -31,7 +31,8 @@ body {
 h1 {
     font-family: 'Pacifico', cursive;
     font-weight: 300;
-    font-size: 3em;
+    font-size: 2em;
+    margin-top: 5px;
     margin-bottom: 10px;
 }
 
@@ -40,11 +41,11 @@ h1 {
  */
 
 .deck {
-    width: 660px;
-    min-height: 680px;
+    width: 400px;
+    min-height: 400px;
     background: linear-gradient(160deg, #ffd200 0%, #f7971e 100%);
-    padding: 32px;
-    border-radius: 10px;
+    padding: 20px;
+    border-radius: 5px;
     box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
     display: flex;
     flex-wrap: wrap;
@@ -54,8 +55,9 @@ h1 {
 }
 
 .deck .card {
-    height: 125px;
-    width: 125px;
+    height: 80px;
+    width: 80px;
+    margin: 5px;
     background: #31414e;
     font-size: 0;
     color: #ffffff;
@@ -74,13 +76,13 @@ h1 {
 }
 
 .deck .card.show {
-    font-size: 33px;
+    font-size: 30px;
 }
 
 .deck .card.match {
     cursor: default;
     background: #02ccba;
-    font-size: 33px;
+    font-size: 30px;
 }
 
 /*
@@ -89,7 +91,7 @@ h1 {
 
 .score-panel {
     text-align: left;
-    width: 345px;
+    width: 200px;
     margin-bottom: 20px;
 }
 
