@@ -18,7 +18,7 @@ body {
 
 body {
     background: #ffffff url('../img/geometry2.png'); /* Background pattern from Subtle Patterns */
-    font-family: 'Coda', cursive;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .container {
@@ -29,8 +29,10 @@ body {
 }
 
 h1 {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Pacifico', cursive;
     font-weight: 300;
+    font-size: 3em;
+    margin-bottom: 10px;
 }
 
 /*
@@ -40,7 +42,7 @@ h1 {
 .deck {
     width: 660px;
     min-height: 680px;
-    background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
+    background: linear-gradient(160deg, #ffd200 0%, #f7971e 100%);
     padding: 32px;
     border-radius: 10px;
     box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
@@ -54,7 +56,7 @@ h1 {
 .deck .card {
     height: 125px;
     width: 125px;
-    background: #2e3d49;
+    background: #31414e;
     font-size: 0;
     color: #ffffff;
     border-radius: 8px;
@@ -67,7 +69,7 @@ h1 {
 
 .deck .card.open {
     transform: rotateY(0);
-    background: #02b3e4;
+    background: linear-gradient(160deg, #c0392b 0%, #8e44ad 100%);
     cursor: default;
 }
 
@@ -88,7 +90,7 @@ h1 {
 .score-panel {
     text-align: left;
     width: 345px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 .score-panel .stars {
@@ -106,4 +108,12 @@ h1 {
 .score-panel .restart {
     float: right;
     cursor: pointer;
+}
+
+/*
+ * Styles for the Win Alert
+ */
+
+.swal-overlay {
+  background-color: rgba(89, 89, 89, 0.3);
 }

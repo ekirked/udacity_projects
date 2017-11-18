@@ -235,7 +235,7 @@ function checkCard(card) {
 	}
 
 	// if all 8 cards match, display a message with the final score
-	if (matches >= 2) {
+	if (matches >= 1) {
 
 		// wait half a second before displaying success message and providing replay button
   		setTimeout(function() {
