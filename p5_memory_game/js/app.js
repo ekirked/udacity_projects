@@ -6,6 +6,8 @@ var cards = [];
 var openCards = [];
 var moves = 0;
 var matches = 0;
+var stars = 3;
+var starsWord = "stars"
 
 // iterate through all cards in DOM and run a function against each one
 // $('.card').each(function(index){
@@ -254,7 +256,7 @@ function checkCard(card) {
 		// wait half a second before displaying success message and providing replay button
   		setTimeout(function() {
 
-  			swal("Congrats!", "You won the game in " + moves + " moves.", "success", {
+  			swal("Congrats!", "You won the game in " + moves + " moves, earning you " + stars + " " + starsWord + ".", "success", {
   				button: "Play again",
 			});
 
@@ -291,8 +293,12 @@ function addCount() {
 	// remove one star at the 11th move and at the 17th move
 	if (moves === 11) {
 		$('.stars li').first().remove();
+		stars--;
 	} else if (moves === 17) {
 		$('.stars li').first().remove();
+		stars--;
+		// reset starsWord to singular "star" to fix grammar
+		starsWord = "star"
 	} else { return };
 
 }
