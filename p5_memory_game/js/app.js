@@ -1,7 +1,4 @@
-// alert("Congrats, you've won the game!");
-
-// define variables
-
+// define global variables
 var cards = [];
 var openCards = [];
 var moves = 0;
@@ -12,17 +9,8 @@ var startTime = 0;
 var endTime = 0;
 
 
-// iterate through all cards in DOM and run a function against each one
-// $('.card').each(function(index){
-	// add current element in the loop to the cards array
-	// cards.push($(this));
-// });
-
 // create a starting deck of cards
 var cardsStart = ['diamond', 'paper-plane-o', 'anchor', 'bolt', 'cube', 'leaf', 'bicycle', 'bomb', 'diamond', 'paper-plane-o', 'anchor', 'bolt', 'cube', 'leaf', 'bicycle', 'bomb'];
-
-// testing: print list of cards
-console.log(cards);
 
 
 // shuffle function from http://stackoverflow.com/a/2450976
@@ -68,12 +56,6 @@ function restart(cards) {
     // use jquery .html method to create HTML for all the card
     deck.html(buildDeck);
 
-    // testing: show all the cards by adding "open show" to each card
-    // deck.find('li').addClass('open show');
-
-	// testing: print list of shuffled cards
-	console.log(cards);
-
 	// add event listener to each card
 	cards = cardClick();
 
@@ -118,9 +100,7 @@ function cardClick() {
 
 		// call checkCard on this card to see if it matches an open card
 		checkCard(card);
-		
-		// testing: print message to console
-		console.log("individual card clicked, end of cardClick")
+
 	});
 }
 
@@ -157,20 +137,18 @@ function cardHide(card) {
 
 // addCard function adds the card to openCards list
 function addCard(card) {
+
 	openCards.push(card);
 
-	// testing: print message to console
-	console.log("individual card added to list of open cards")
-
-	// testing: print current list of open cards
-	console.log(openCards);
 }
 
 
 // removeCards function removes two cards from the list of opened cards
 function removeCards() {
+
 	openCards.pop();
 	openCards.pop();
+
 }
 
 
@@ -186,32 +164,17 @@ function celebrateCard(correctCard) {
 // checkCard function checks to see if a new card matches an open card
 function checkCard(card) {
 
-	// testing: print current length of list of open cards to console
-	console.log("length of list of open cards: " + openCards.length);
-
 	// checks whether the current list of open cards has a card in it already
 	if (openCards.length > 1) {
 
-		// testing: print message to console
-		console.log("prints if openCards has something in it");
-
 		// gets the name of the card that's already open
 		const openedCard = $('.deck li').get(openCards[0]);
-
-		// testing: print name of current card
-		console.log("current card: " + card.attr('data-name'));
-
-		// testing: print name of opened card
-		console.log("opened card: " + openCards[0].attr('data-name'));
 
 		// call addCount to increment move counter
 		addCount();
 
 		// check to see if the two open cards match
 		if (card.attr('data-name') === openCards[0].attr('data-name')) {
-
-			// testing: print message to console
-			console.log("these two cards match: " + card + " & " + openedCard);
 
 			// animate the two matched cards in an open position
 				celebrateCard(card);
@@ -225,15 +188,6 @@ function checkCard(card) {
 			console.log("matches: " + matches);
 
 		} else {
-
-			// testing: print message to console
-			console.log("these two cards do not match: " + card + " & " + openedCard);
-
-			// testing: print name of current card
-			console.log("current card: " + card.attr('data-name'));
-
-			// testing: print name of opened card
-			console.log("opened card: " + openCards[0].attr('data-name'));
 
 			// call cardHide function (with a delay) to hide incorrect matches
 			setTimeout(function() {
@@ -252,12 +206,12 @@ function checkCard(card) {
 	} else {
 
 		// this means the new card is the only one open
-		console.log("there are no other open cards to compare against");
+		return;
 
 	}
 
 	// if all 8 cards match, display a message with the final score
-	if (matches >= 2) {
+	if (matches >= 8) {
 
 		// wait half a second before displaying success message and providing replay button
   		setTimeout(function() {
@@ -285,9 +239,6 @@ function addCount() {
 
 	// udpate HTML
 	$('.moves').html(moves);
-
-	// testing: print message to console
-	console.log("moves: " + moves);
 
 	// fix grammar of singular "1 move"
 	if (moves === 1) {
@@ -323,14 +274,10 @@ function resetCount() {
 
 
 // set up event listener for restart button
-// let restartButton = $('.fa-repeat').val();
 $('.fa-repeat').on('click', function(event) {
 
 	// event.preventDefault();
 	restart(cardsStart);
-
-	// testing: print message to console
-	console.log("restart button clicked")
 
 	// clear current list of open cards
 	removeCards();
