@@ -1,21 +1,21 @@
 // define global variables
-var cards = [];
-var openCards = [];
-var moves = 0;
-var matches = 0;
-var stars = 3;
-var starsWord = "stars";
-var startTime = 0;
-var endTime = 0;
+let cards = [];
+let openCards = [];
+let moves = 0;
+let matches = 0;
+let stars = 3;
+let starsWord = "stars";
+let startTime = 0;
+let endTime = 0;
 
 
 // create a starting deck of cards
-var cardsStart = ['diamond', 'paper-plane-o', 'anchor', 'bolt', 'cube', 'leaf', 'bicycle', 'bomb', 'diamond', 'paper-plane-o', 'anchor', 'bolt', 'cube', 'leaf', 'bicycle', 'bomb'];
+const cardsStart = ['diamond', 'paper-plane-o', 'anchor', 'bolt', 'cube', 'leaf', 'bicycle', 'bomb', 'diamond', 'paper-plane-o', 'anchor', 'bolt', 'cube', 'leaf', 'bicycle', 'bomb'];
 
 
 // shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
-    var currentIndex = array.length, temporaryValue, randomIndex;
+    let currentIndex = array.length, temporaryValue, randomIndex;
 
     while (currentIndex !== 0) {
         randomIndex = Math.floor(Math.random() * currentIndex);
@@ -42,15 +42,18 @@ function restart(cards) {
     cards = shuffle(cards);
 
     // get deck from DOM and empty it
-    var deck = $('.deck');
+    let deck = $('.deck');
     deck.empty();
 
     // start with empty string
-    var buildDeck = '';
+    let buildDeck = '';
+
     // use for...of loop to loop over the entire deck of cards
     for (const card of cards) {
+
     	// use template literals to build HTML for each card
         buildDeck += `<li class="card" data-name="${card}"><i class="fa fa-${card}"></i></li>`;
+
     }
 
     // use jquery .html method to create HTML for all the card
@@ -60,15 +63,18 @@ function restart(cards) {
 	cards = cardClick();
 
 	// get stars panel from DOM and empty it
-	var stars = $('.stars');
+	let stars = $('.stars');
 	stars.empty();
 
 	// start with empty string
-    var buildStars = '';
+    let buildStars = '';
+
     // make three stars
-    for (var i = 0; i < 3; i++) {
+    for (let i = 0; i < 3; i++) {
+
     	// use template literals to build HTML for each star
         buildStars += `<li><i class="fa fa-star"></i></li>`;
+
     }
 
     // use jquery .html method to create HTML for all the card
@@ -91,16 +97,25 @@ function cardClick() {
 	$('.card').on('click', function(event) {
 
 		card = $(this);
+
+		// checks that there are not already two open cards
+		if (openCards.length > 1) {
+
+			// clicking quickly on a third card won't do anything
+			return;
+
+		} else {
 	
-		// call cardShow on this card to display it		
-		cardShow(card);
+			// call cardShow on this card to display it		
+			cardShow(card);
 
-		// call addCard on this card to add it to the current list of open cards
-		addCard(card);
+			// call addCard on this card to add it to the current list of open cards
+			addCard(card);
 
-		// call checkCard on this card to see if it matches an open card
-		checkCard(card);
+			// call checkCard on this card to see if it matches an open card
+			checkCard(card);
 
+		}
 	});
 }
 
@@ -167,9 +182,6 @@ function checkCard(card) {
 	// checks whether the current list of open cards has a card in it already
 	if (openCards.length > 1) {
 
-		// gets the name of the card that's already open
-		const openedCard = $('.deck li').get(openCards[0]);
-
 		// call addCount to increment move counter
 		addCount();
 
@@ -185,16 +197,13 @@ function checkCard(card) {
 
 			// increment match counter
 			matches++;
-			console.log("matches: " + matches);
 
 		} else {
 
 			// call cardHide function (with a delay) to hide incorrect matches
 			setTimeout(function() {
 				cardHide(card);
-				console.log("hid the new card");
 				cardHide(openCards[0]);
-				console.log("hid the already-opened card");
 
 				// remove both cards from list of open cards
 				removeCards();
@@ -216,7 +225,7 @@ function checkCard(card) {
 		// wait half a second before displaying success message and providing replay button
   		setTimeout(function() {
 
-  			swal("Congrats!", "You won the game in " + moves + " moves, earning you " + stars + " " + starsWord + ".", "success", {
+  			swal("Congrats!", `You won the game in ${moves} moves, earning you ${stars} ${starsWord}.`, "success", {
   				button: "Play again",
 			});
 
@@ -255,7 +264,7 @@ function addCount() {
 		$('.stars li').first().remove();
 		stars--;
 		// reset starsWord to singular "star" to fix grammar
-		starsWord = "star"
+		starsWord = "star";
 	} else { return };
 
 }
