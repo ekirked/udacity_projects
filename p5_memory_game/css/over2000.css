@@ -1,0 +1,39 @@
+h1 {
+    font-size: 4em;
+    margin-top: 30px;
+}
+
+/*
+ * Styles for the deck of cards
+ */
+
+.deck {
+    width: 800px;
+    min-height: 800px;
+}
+
+.deck .card {
+    height: 140px;
+    width: 140px;
+}
+
+.deck .card.show {
+    font-size: 40px;
+}
+
+.deck .card.match {
+    font-size: 40px;
+}
+
+/*
+ * Styles for the Score Panel
+ */
+
+.score-panel {
+    width: 360px;
+    margin-bottom: 30px;
+}
+
+.score-panel .time {
+    margin: 0 5px 0 80px;
+}
