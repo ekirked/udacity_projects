@@ -8,6 +8,8 @@ var moves = 0;
 var matches = 0;
 var stars = 3;
 var starsWord = "stars";
+var startTime = 0;
+var endTime = 0;
 
 
 // iterate through all cards in DOM and run a function against each one
@@ -94,8 +96,7 @@ function restart(cards) {
     $('.card').transition({ rotate: '360deg' });
 
     // start game timer
-    var startTime = new Date;
-    startTimer(startTime);
+    startTimer();
 
 }
 
@@ -256,7 +257,7 @@ function checkCard(card) {
 	}
 
 	// if all 8 cards match, display a message with the final score
-	if (matches >= 8) {
+	if (matches >= 2) {
 
 		// wait half a second before displaying success message and providing replay button
   		setTimeout(function() {
@@ -338,10 +339,13 @@ $('.fa-repeat').on('click', function(event) {
 
 
 // set up game timer
-function startTimer(startTime) {
+function startTimer() {
+
+	startTime = Date.now();
 
 	setInterval(function() {
-	    $(".clock").text(Math.floor((new Date - startTime) / 1000));
+		endTime = Date.now();
+	    $(".clock").text(Math.floor((endTime - startTime) / 1000));
 	}, 1000);
 
 }
