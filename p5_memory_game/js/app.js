@@ -92,6 +92,9 @@ function restart(cards) {
     // animate cards to indicate shuffling
     $('.card').transition({ rotate: '360deg' });
 
+    // start game timer
+    startTimer();
+
 }
 
 
@@ -333,26 +336,9 @@ $('.fa-repeat').on('click', function(event) {
 
 
 // set up game timer
-/* 
-$(document).ready(function(){
-         function getdate(){
-            var today = new Date();
-            var h = today.getHours();
-            var m = today.getMinutes();
-            var s = today.getSeconds();
-             if(s<10){
-                 s = "0"+s;
-             }
-
-            $(".clock").text(h+" : "+m+" : "+s);
-             setTimeout(function(){getdate()}, 500);
-            }
-
-        $("button").click(getdate);
-    });
-*/    
-
-var start = new Date;
-setInterval(function() {
-    $(".clock").text(Math.floor((new Date - start) / 1000));
-}, 1000);
+function startTimer() {
+	var startTime = new Date;
+	setInterval(function() {
+	    $(".clock").text(Math.floor((new Date - startTime) / 1000));
+	}, 1000);
+}
