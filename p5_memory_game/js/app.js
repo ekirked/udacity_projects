@@ -7,7 +7,8 @@ var openCards = [];
 var moves = 0;
 var matches = 0;
 var stars = 3;
-var starsWord = "stars"
+var starsWord = "stars";
+
 
 // iterate through all cards in DOM and run a function against each one
 // $('.card').each(function(index){
@@ -93,7 +94,8 @@ function restart(cards) {
     $('.card').transition({ rotate: '360deg' });
 
     // start game timer
-    startTimer();
+    var startTime = new Date;
+    startTimer(startTime);
 
 }
 
@@ -336,9 +338,10 @@ $('.fa-repeat').on('click', function(event) {
 
 
 // set up game timer
-function startTimer() {
-	var startTime = new Date;
+function startTimer(startTime) {
+
 	setInterval(function() {
 	    $(".clock").text(Math.floor((new Date - startTime) / 1000));
 	}, 1000);
+
 }
